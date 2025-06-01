@@ -1,7 +1,12 @@
 tags
 test.sh
 .luarc.json
-nvim
 
 spell/
 lazy-lock.json
+
+com.corsair/
+flutter/
+gh/
+iterm2/
+linearmouse/
