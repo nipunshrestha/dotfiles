@@ -1,4 +1,3 @@
-
 # ~/.zshrc 
 eval $(/opt/homebrew/bin/brew shellenv)
 export PATH="~/Library/Application Support/pypoetry/venv/bin/poetry":$PATH
@@ -129,3 +128,31 @@ export PATH=$HOME/development/flutter/bin:$PATH
 # bun
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
+
+#Yazi 
+export EDITOR="nvim"
+function y() {
+	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
+	yazi "$@" --cwd-file="$tmp"
+	IFS= read -r -d '' cwd < "$tmp"
+	[ -n "$cwd" ] && [ "$cwd" != "$PWD" ] && builtin cd -- "$cwd"
+	rm -f -- "$tmp"
+}
+
+#vim mode in iterm2
+bindkey -v 
+
+run_tmux_sessioniser() {
+  ~/.local/bin/scripts/tmux-sessioniser
+  zle reset-prompt
+}
+zle -N run_tmux_sessioniser
+
+bindkey -M visual '^f' run_tmux_sessioniser
+bindkey -M viins  '^f' run_tmux_sessioniser
+
+#comand history when in vim insert mode
+bindkey -M viins '^p' up-line-or-history
+bindkey -M viins '^n' down-line-or-history
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
