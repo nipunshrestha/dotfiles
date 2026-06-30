@@ -1,4 +1,2 @@
-[flavor]
-use = "tokyo-night"
-# For Yazi 0.4 and above
-dark = "tokyo-night"
+# Tokyo Night flavor disabled because the installed flavor schema is older than the current Yazi theme schema.
+# Reinstall an updated flavor, then restore the [flavor] section if desired.
